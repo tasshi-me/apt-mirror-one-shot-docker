@@ -9,6 +9,8 @@ RUN set -x \
     && apt-get -yqq autoremove \
     && apt-get -yqq autoclean
 
+COPY ubuntu_xenial_mirror.list /etc/apt/mirror.list
+
 COPY run_apt-mirror.sh /
 
 CMD ["/run_apt-mirror.sh"]
