@@ -8,5 +8,7 @@ RUN set -x \
     && apt-get -yqq clean \
     && apt-get -yqq autoremove \
     && apt-get -yqq autoclean
-CMD ["bash"]
 
+COPY run_apt-mirror.sh /
+
+CMD ["/run_apt-mirror.sh"]
