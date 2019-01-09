@@ -9,7 +9,7 @@ RUN set -x \
     && apt-get -yqq clean \
     && rm -rf /var/lib/apt/lists* /var/tmp/* /tmp/* 
 
-COPY ubuntu_xenial_mirror.list /etc/apt/mirror.list
+COPY mirror.list.d/ubuntu_xenial_amd64.list /etc/apt/mirror.list
 
 COPY run_apt-mirror.sh /
 
