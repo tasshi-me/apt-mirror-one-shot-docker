@@ -1,0 +1,16 @@
+FROM alpine:3.8
+
+MAINTAINER Masaharu TASHIRO <masatsr.kit@gmail.com>
+
+RUN set -x \
+    && apk --update add gdbm perl libssl1.1 \
+    && wget -O - 'https://github.com/apt-mirror/apt-mirror/archive/master.tar.gz' | tar zxvf - -C /tmp/
+    && cd /tmp/apt-mirror-master/
+    && make install \
+    && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* 
+
+COPY mirror.list.d/ubuntu_xenial_amd64.list /etc/apt/mirror.list
+
+COPY run_apt-mirror.sh /
+
+CMD ["/run_apt-mirror.sh"]
