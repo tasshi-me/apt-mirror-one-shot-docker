@@ -13,4 +13,4 @@ COPY mirror.list.d/ubuntu_xenial_amd64.list /etc/apt/mirror.list
 
 COPY run_apt-mirror.sh /
 
-CMD ["/run_apt-mirror.sh"]
+CMD ["su", "-", "apt-mirror", "-c", "/run_apt-mirror.sh"]
